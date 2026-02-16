@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.titulo }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <a href="{% url 'blog' %}" class="btn btn-outline-secondary mb-4">&larr; Volver al Blog</a>
+
+        <article class="blog-post">
+            <h1 class="display-4 fw-bold mb-3">{{ post.titulo }}</h1>
+            <p class="text-muted fst-italic mb-4">
+                Publicado el {{ post.fecha_publicacion|date:"d M Y" }}
+            </p>
+            
+            <div class="post-content lh-lg fs-5">
+                {{ post.contenido|linebreaks }}
+            </div>
+        </article>
+    </div>
+</div>
+{% endblock %}

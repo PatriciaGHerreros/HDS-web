@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Servicios | Mi Oferta{% endblock %}
+
+{% block content %}
+<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+    <h1 class="display-4 fw-normal">Mis Servicios</h1>
+    <p class="fs-5 text-muted">Soluciones escalables adaptadas a tus necesidades. Elige el plan que mejor se adapte a tu proyecto.</p>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    
+    <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">Básico</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title">€XX<small class="text-muted fw-light">/hora</small></h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                    <li>Consultoría inicial</li>
+                    <li>Revisión de código</li>
+                    <li>Soporte por Email</li>
+                    <li>Acceso al Blog</li>
+                </ul>
+                <button type="button" class="w-100 btn btn-lg btn-outline-primary">Contactar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm border-primary">
+            <div class="card-header py-3 text-white bg-primary border-primary">
+                <h4 class="my-0 fw-normal">Profesional</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title">€XX<small class="text-muted fw-light">/proyecto</small></h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                    <li>Desarrollo Web Completo</li>
+                    <li>Integración con APIs</li>
+                    <li>Base de datos optimizada</li>
+                    <li>Soporte prioritario</li>
+                </ul>
+                <button type="button" class="w-100 btn btn-lg btn-primary">Empezar ahora</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">Enterprise</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title">A medida</h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                    <li>Arquitectura de Software</li>
+                    <li>Auditoría de Ciberseguridad</li>
+                    <li>Formación de equipos</li>
+                    <li>Soporte 24/7</li>
+                </ul>
+                <button type="button" class="w-100 btn btn-lg btn-outline-primary">Agendar llamada</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

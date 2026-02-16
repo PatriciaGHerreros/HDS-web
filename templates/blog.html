@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Blog | Artículos{% endblock %}
+
+{% block content %}
+    <h2 class="mb-4">Últimas Publicaciones</h2>
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3 class="h5 card-title">{{ post.titulo }}</h3>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ post.fecha_publicacion|date:"d M Y" }}</h6>
+                    <p class="card-text">{{ post.contenido|truncatewords:20 }}</p>
+                    <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary btn-sm">Leer más</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No hay artículos publicados aún.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

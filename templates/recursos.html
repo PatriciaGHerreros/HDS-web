@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %} {% block title %}Recursos | Utilidades Gratuitas{% endblock %}
+
+{% block content %}
+<div class="text-center mb-5">
+    <h1 class="display-4 fw-bold">Recursos Gratuitos</h1>
+    <p class="lead text-muted">Herramientas y guías para potenciar tu seguridad digital.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card h-100 shadow-sm border-0 bg-light">
+            <div class="card-body p-5">
+                <div class="mb-3 text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-file-earmark-lock" viewBox="0 0 16 16">
+                        <path d="M10 7v1.076c.54.166 1 .597 1 1.224v2.4c0 .816-.781 1.3-1.5 1.3h-3c-.719 0-1.5-.484-1.5-1.3V9.3c0-.627.46-1.058 1-1.224V7a2 2 0 1 1 4 0zM7 7v1h2V7a1 1 0 0 0-2 0z"/>
+                        <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+                    </svg>
+                </div>
+                <h2 class="h4">Guía Básica de Ciberseguridad</h2>
+                <p class="card-text text-muted">Aprende los 10 pasos fundamentales para proteger tu entorno de desarrollo y evitar fugas de información.</p>
+                
+                <a href="{% static 'documentos/guia-seguridad.pdf' %}" class="btn btn-primary mt-3" download>
+                    Descargar PDF Gratuito
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body p-5 opacity-50">
+                <h2 class="h4">Checklist de Auditoría (Próximamente)</h2>
+                <p class="card-text text-muted">Una lista paso a paso para auditar la seguridad de tus proyectos Django antes de salir a producción.</p>
+                <button class="btn btn-secondary mt-3" disabled>No disponible aún</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

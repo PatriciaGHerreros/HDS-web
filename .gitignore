@@ -1,0 +1,15 @@
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+media/
+
+# Entorno Virtual
+env/
+venv/
+.env
+
+# VS Code (configuraciones de tu editor)
+.vscode/

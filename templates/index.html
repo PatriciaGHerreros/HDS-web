@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Inicio | Horizonte Digital Seguro{% endblock %}
+
+{% block content %}
+<div class="row align-items-center py-5">
+    <div class="col-lg-6">
+        <h1 class="display-4 fw-bold mb-3" style="color: var(--color-primario);">
+            Protege el eslabón <br>
+            <span style="color: var(--color-acento);">más humano</span>.
+        </h1>
+        <p class="lead text-muted mb-4">
+            La ciberseguridad no es solo código; es psicología. Aprende a detectar la <strong>Ingeniería Social</strong> y blinda tu entorno digital contra el engaño.
+        </p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <a href="{% url 'blog' %}" class="btn btn-primary btn-lg px-4 me-md-2 shadow-sm">
+                Leer Artículos
+            </a>
+            <a href="{% url 'recursos' %}" class="btn btn-outline-secondary btn-lg px-4 border-0" style="background-color: white;">
+                Descargar Guías
+            </a>
+        </div>
+    </div>
+    
+    <div class="col-lg-6 mt-4 mt-lg-0">
+        <img src="{% static 'img/hero-bg.png' %}" alt="Ciberseguridad Humana" class="img-fluid rounded-4 shadow-lg" style="animation: float 6s ease-in-out infinite;">
+    </div>
+</div>
+
+<div class="row mt-5 pt-4">
+    <div class="col-12 text-center mb-4">
+        <h2 class="h3 fw-bold">¿Por dónde empezar?</h2>
+        <p class="text-muted">Recursos seleccionados para tu seguridad</p>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 p-4 border-0 bg-white">
+            <div class="mb-3 text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
+                    <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+                </svg>
+            </div>
+            <h3 class="h5">Blog Educativo</h3>
+            <p class="text-muted small">Artículos sobre phishing, vishing y cómo proteger tu identidad.</p>
+            <a href="{% url 'blog' %}" class="stretched-link text-decoration-none fw-bold">Leer más &rarr;</a>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 p-4 border-0 bg-white">
+            <div class="mb-3 text-danger" style="color: var(--color-alerta) !important;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-shield-check" viewBox="0 0 16 16">
+                    <path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.23-1.158-.512-1.519-.714C11.393 1.295 9.924 1 8.275 1s-3.118.295-4.937.89z"/>
+                </svg>
+            </div>
+            <h3 class="h5">Herramientas</h3>
+            <p class="text-muted small">Descarga guías, checklists y utilidades gratuitas.</p>
+            <a href="{% url 'recursos' %}" class="stretched-link text-decoration-none fw-bold">Descargar &rarr;</a>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 p-4 border-0 bg-white">
+            <div class="mb-3 text-info" style="color: var(--color-acento) !important;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
+                    <path d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H4Zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+                    <path d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.373 5.373 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2H2Z"/>
+                </svg>
+            </div>
+            <h3 class="h5">Consultoría</h3>
+            <p class="text-muted small">Servicios personalizados de auditoría y formación.</p>
+            <a href="{% url 'servicios' %}" class="stretched-link text-decoration-none fw-bold">Ver Planes &rarr;</a>
+        </div>
+    </div>
+</div>
+
+<style>
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+</style>
+{% endblock %}
