@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-fn+6c_k0pq^yn1$m6*j8f@lm5lw*eabjchlg@esgyp!ui6pbu('
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['horizontedigitalseguro.pythonanywhere.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -116,16 +119,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
+# La URL que usará el navegador
+STATIC_URL = '/static/'
 
+# La carpeta "almacén" donde se reunirá TODO para el servidor
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Tus carpetas de trabajo donde están tus CSS y JS actuales
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
-
 # Configuración de Archivos Multimedia (Imágenes del Blog)
 import os
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media', 'media')
 
 # settings.py
 
@@ -157,3 +164,7 @@ SUMMERNOTE_CONFIG = {
         'fontSizes': ['8', '10', '12', '14', '16', '18', '24', '36'],
     },
 }
+
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
