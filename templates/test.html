@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+            <h1 class="display-5 fw-bold text-dark mb-3">Test de Vulnerabilidad Digital</h1>
+            <h3 class="fw-normal text-secondary mb-4">Descubre en 2 minutos cómo de abierta está tu puerta digital.</h3>
+            <p class="lead text-muted mb-5">Instrucciones: Elige la opción que más se acerque a lo que harías tú. Si una situación no aplica a tu vida, elige la D.</p>
+                        <div id="test-container" class="card shadow-sm border-0 p-4 p-md-5 text-start">
+                <h4 id="question-text" class="fw-bold mb-4" style="line-height: 1.4;">Cargando pregunta...</h4>
+                
+                <div id="options-container" class="d-grid gap-3">
+                    </div>
+            </div>
+
+            <div id="result-container" class="card shadow-sm border-0 p-4 p-md-5 d-none">
+                <h2 class="fw-bold mb-3">Tu Nivel de Riesgo</h2>
+                
+                <div class="progress mb-4" style="height: 30px; border-radius: 15px;">
+                    <div id="result-bar" class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" style="width: 0%; font-size: 1.1rem; font-weight: bold;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                </div>
+
+                <h4 id="result-message" class="mb-4" style="line-height: 1.5;">...</h4>
+                
+                <a href="{% url 'recursos' %}" class="btn btn-primary btn-lg rounded-pill mt-3">
+                    <i class="bi bi-bag-plus me-2"></i> Echa un vistazo a estos recursos gratuitos para mejorar tu seguridad
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    // Tus preguntas personalizadas
+    // Tus preguntas personalizadas (¡Ahora con las respuestas mezcladas!)
+    const questions = [
+        {
+            text: "1. Hablemos de tus llaves (Contraseñas). ¿Cuántas distintas usas para tus cuentas importantes (correo, banco, redes)?",
+            options: [
+                { text: "A) Unas cuantas. Normalmente uso la misma base pero le cambio el número del final o la mayúscula.", dangerPoints: 5 },
+                { text: "B) Son todas distintas y súper largas. Uso un Gestor de Contraseñas o frases que solo yo recuerdo.", dangerPoints: 0 },
+                { text: "C) Una o dos para todo. Tengo muy mala memoria y prefiero ir a lo seguro.", dangerPoints: 10 }
+            ]
+        },
+        {
+            text: "2. Entras a tu correo o a tu red social desde un móvil nuevo. Aparte de tu contraseña, ¿te pide algo más?",
+            options: [
+                { text: "A) Sí, siempre me pide un código SMS, un aviso en mi app o usar mi huella (tengo activado el Doble Factor / 2FA).", dangerPoints: 0 },
+                { text: "B) No, pongo la clave y entro directo. ¡Faltaría más!", dangerPoints: 10 },
+                { text: "C) Creo que alguna vez me ha mandado un aviso al móvil, pero me resulta un fastidio.", dangerPoints: 5 }
+            ]
+        },
+        {
+            text: "3. Te llega un SMS: \"Tu paquete está retenido. Paga 1,99€ en este enlace para liberarlo: [enlace]\". ¿Qué haces?",
+            options: [
+                { text: "A) Borro el SMS al instante. Si espero un paquete, entro a la app oficial o a la web escribiéndola yo en Google, nunca desde el SMS.", dangerPoints: 0 },
+                { text: "B) Dudo un poco, pero si el mensaje parece real y tiene el logo de Correos, entro a mirar.", dangerPoints: 5 },
+                { text: "C) Pincho rápido y pago. Pido tantas cosas online que seguro que es algo mío y lo necesito ya.", dangerPoints: 10 }
+            ]
+        },
+        {
+            text: "4. 💼 [Zona Emprendedoras/Trabajo] Te llega un email urgente de un proveedor diciendo que han cambiado su número de cuenta para la próxima factura, o un aviso de que te van a cerrar la cuenta de Instagram de tu negocio.",
+            options: [
+                { text: "A) Me extraña un poco, pero si el logo de la empresa está en el email, supongo que será verdad.", dangerPoints: 5 },
+                { text: "B) Llamo por teléfono directamente al proveedor al número que ya tenía (no al del email) para confirmar, o entro a Instagram por mi cuenta sin tocar el enlace.", dangerPoints: 0 },
+                { text: "C) Hago el pago a la nueva cuenta o pincho en el enlace rápido para no perder mi Instagram. ¡El negocio es lo primero y me entra el pánico!", dangerPoints: 10 },
+                { text: "D) No procede (No tengo un negocio, ni gestiono facturas o clientes).", dangerPoints: 0, isNA: true }
+            ]
+        },
+        {
+            text: "5. 👵👴 [Zona Familia/Seniors] Recibes un mensaje de WhatsApp desde un número desconocido: \"Hola mamá/papá, mi móvil se ha roto, este es mi nuevo número y necesito que me hagas un Bizum urgente para pagar una cosa\".",
+            options: [
+                { text: "A) Le contesto por WhatsApp preguntando qué le ha pasado, pero me acabo fiando si me da algún detalle.", dangerPoints: 5 },
+                { text: "B) No envío nada. Intento llamar directamente a mi hijo/a a su número de teléfono original o pregunto a alguien de la familia antes de soltar un euro.", dangerPoints: 0 },
+                { text: "C) Me asusto muchísimo y hago la transferencia rápido para ayudar. ¡Es una emergencia!", dangerPoints: 10 },
+                { text: "D) No procede (No tengo hijos/nietos o no uso WhatsApp para estas cosas).", dangerPoints: 0, isNA: true }
+            ]
+        },
+        {
+            text: "6. 📱 [Zona Jóvenes/Redes] Estás en TikTok, Instagram o jugando online y ves un enlace (o te lo manda un \"amigo\") para conseguir monedas gratis, un filtro exclusivo o ver quién visita tu perfil.",
+            options: [
+                { text: "A) Paso de largo. Sé que los chollos mágicos en internet no existen y que esos enlaces solo quieren robar mi cuenta o mis datos.", dangerPoints: 0 },
+                { text: "B) Solo lo hago si me lo manda un amigo por mensaje directo, aunque el mensaje suene un poco raro o esté en otro idioma.", dangerPoints: 5 },
+                { text: "C) Pincho y meto mi usuario sin pensar. ¡Todo el mundo lo hace y quiero ver qué pasa!", dangerPoints: 10 },
+                { text: "D) No procede (No uso redes sociales ni juego a videojuegos online).", dangerPoints: 0, isNA: true }
+            ]
+        },
+        {
+            text: "7. Tu móvil o tu ordenador te avisa: \"Hay una nueva actualización del sistema disponible\".",
+            options: [
+                { text: "A) Lo actualizo cuando me acuerdo o cuando el móvil ya se reinicia solo por obligación.", dangerPoints: 5 },
+                { text: "B) Lo actualizo lo antes posible. Sé que esas actualizaciones son \"vacunas\" contra virus y fallos de seguridad.", dangerPoints: 0 },
+                { text: "C) Le doy a \"Recordar mañana\". Y así llevo seis meses.", dangerPoints: 10 }
+            ]
+        },
+        {
+            text: "8. Estás tomando algo en una cafetería o un aeropuerto con Wi-Fi gratis y sin contraseña. ¿Qué haces?",
+            options: [
+                { text: "A) Tiro de mis propios datos móviles (4G/5G). No me fío de las redes públicas abiertas porque cualquiera podría estar espiando.", dangerPoints: 0 },
+                { text: "B) Me conecto, pero solo para mirar redes sociales o buscar algo rápido en Google.", dangerPoints: 5 },
+                { text: "C) Me conecto de cabeza para no gastar mis datos y aprovecho para hacer una transferencia en la app del banco.", dangerPoints: 10 }
+            ]
+        }
+    ];
+
+    let currentQuestionIndex = 0;
+    let totalDangerPoints = 0;
+    let maxApplicablePoints = 0; // Se calcula dinámicamente
+
+    // Función para cargar la pregunta en pantalla
+    function loadQuestion() {
+        const q = questions[currentQuestionIndex];
+        
+        // Formatear el texto de la pregunta para que se vea bien
+        document.getElementById('question-text').innerText = q.text;
+        
+        const optionsDiv = document.getElementById('options-container');
+        optionsDiv.innerHTML = ''; // Limpiamos opciones anteriores
+        
+        q.options.forEach(option => {
+            const btn = document.createElement('button');
+            // Estilos del botón: grande, con borde, texto alineado a la izquierda
+            btn.className = 'btn btn-outline-secondary btn-lg text-start p-3 shadow-sm';
+            // Al pasar el ratón se pone azulito
+            btn.style.transition = "all 0.2s";
+            
+            btn.innerText = option.text;
+            btn.onclick = () => selectAnswer(option.dangerPoints, option.isNA || false);
+            optionsDiv.appendChild(btn);
+        });
+    }
+
+    // Función que se ejecuta al hacer clic en una respuesta
+    function selectAnswer(points, isNA) {
+        totalDangerPoints += points;
+        
+        // Si no han elegido "No procede", sumamos 10 puntos al máximo posible
+        if (!isNA) {
+            maxApplicablePoints += 10;
+        }
+        
+        currentQuestionIndex++;
+        
+        // Comprobar si quedan preguntas
+        if (currentQuestionIndex < questions.length) {
+            loadQuestion(); 
+        } else {
+            showResults();  
+        }
+    }
+
+    // Calcular y mostrar la nota final
+    function showResults() {
+        document.getElementById('test-container').classList.add('d-none');
+        document.getElementById('result-container').classList.remove('d-none');
+        
+        // Evitar error matemático si alguien responde "No procede" a absolutamente todo
+        if (maxApplicablePoints === 0) maxApplicablePoints = 10; 
+
+        // Regla de tres para sacar el porcentaje exacto
+        let percentage = Math.round((totalDangerPoints / maxApplicablePoints) * 100);
+        
+        const bar = document.getElementById('result-bar');
+        bar.style.width = percentage + '%';
+        bar.innerText = percentage + '% Vulnerable';
+        
+        const messageEl = document.getElementById('result-message');
+        
+        // Mostrar mensaje personalizado según la nota
+        if (percentage >= 70) {
+            bar.className = 'progress-bar progress-bar-striped progress-bar-animated bg-danger';
+            messageEl.innerHTML = "🚨 <strong>¡Alerta Roja!</strong> Tienes demasiadas puertas abiertas. Un ciberataque o una estafa es cuestión de tiempo. Necesitas blindarte urgentemente.";
+        } else if (percentage >= 30) {
+            bar.className = 'progress-bar progress-bar-striped progress-bar-animated bg-warning';
+            messageEl.innerHTML = "⚠️ <strong>Nivel Medio-Alto.</strong> Haces algunas cosas bien, pero tienes puntos ciegos muy peligrosos. Vamos a cerrarlos cuanto antes.";
+        } else if (percentage > 0) {
+            bar.className = 'progress-bar progress-bar-striped progress-bar-animated bg-info';
+            messageEl.innerHTML = "✅ <strong>Buen Nivel.</strong> Vas por buen camino y tienes sentido común digital, pero aún hay pequeños detalles que puedes mejorar.";
+        } else {
+            bar.className = 'progress-bar progress-bar-striped progress-bar-animated bg-success';
+            messageEl.innerHTML = "🛡️ <strong>¡Escudo de Titanio!</strong> Tienes unos hábitos digitales excelentes. Sigue así y pásate por los recursos para mantenerte al día.";
+        }
+    }
+
+    // Arrancamos la primera pregunta al abrir la web
+    window.onload = loadQuestion;
+</script>
+{% endblock %}

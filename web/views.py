@@ -62,3 +62,6 @@ class RecursosView(TemplateView):
         context['guias'] = Recurso.objects.filter(categoria='GUIAS')
         
         return context
+
+class TestView(TemplateView):
+    template_name = 'test.html'  

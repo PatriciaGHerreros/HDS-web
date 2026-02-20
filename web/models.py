@@ -29,7 +29,7 @@ class Recurso(models.Model):
     # Definimos las categorías exactas que me has pedido
     CATEGORIAS = [
         ('VERIFICACION', 'Verificación y Análisis (Externo)'),
-        ('GUIAS', 'Guías oficiales y Kits (Externo)'),
+        ('GUIAS', 'Botiquín de Primeros Auxilios (Externo)'),
         ('EXCLUSIVO', 'Recursos Exclusivos HDS'),
     ]
 
