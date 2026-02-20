@@ -3,21 +3,91 @@
 {% block title %}Blog | Artículos{% endblock %}
 
 {% block content %}
-    <h2 class="mb-4">Últimas Publicaciones</h2>
+<div class="container py-4">
+    <div class="row mb-4 align-items-center">
+        <div class="col">
+            <h2 class="fw-bold" style="color: var(--color-primario);">Últimas Publicaciones</h2>
+            <p class="text-muted">Consejos, alertas y estrategias de seguridad.</p>
+        </div>
+    </div>
+
     <div class="row">
         {% for post in posts %}
         <div class="col-md-6 mb-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h3 class="h5 card-title">{{ post.titulo }}</h3>
-                    <h6 class="card-subtitle mb-2 text-muted">{{ post.fecha_publicacion|date:"d M Y" }}</h6>
-                    <p class="card-text">{{ post.contenido|truncatewords:20 }}</p>
-                    <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary btn-sm">Leer más</a>
+            <div class="card h-100 border-0 shadow-sm rounded-4 hover-shadow transition overflow-hidden">
+                
+                {% if post.imagen %}
+                    <img src="{{ post.imagen.url }}" class="card-img-top" alt="{{ post.titulo }}" style="height: 200px; object-fit: cover;">
+                {% else %}
+                    <div class="card-img-top d-flex align-items-center justify-content-center bg-light" style="height: 200px;">
+                        <span class="text-muted"><i class="bi bi-image"></i> Sin imagen</span>
+                    </div>
+                {% endif %}
+
+                <div class="card-body p-4 d-flex flex-column">
+                    
+                    <div class="mb-2">
+                        {% if post.categoria %}
+                        <span class="badge rounded-pill" style="background-color: var(--color-acento); font-weight: normal; font-size: 0.8rem;">
+                            {{ post.categoria.nombre }}
+                        </span>
+                        {% endif %}
+                        <small class="text-muted ms-1">{{ post.fecha_publicacion|date:"d M Y" }}</small>
+                    </div>
+
+                    <h3 class="h4 card-title fw-bold mb-2">
+                        <a href="{% url 'post_detail' pk=post.pk %}" class="text-decoration-none" style="color: var(--color-primario);">
+                            {{ post.titulo }}
+                        </a>
+                    </h3>
+
+                    {% if post.subtitulo %}
+                    <h5 class="h6 text-muted mb-3 fw-normal fst-italic" style="line-height: 1.4;">
+                        {{ post.subtitulo }}
+                    </h5>
+                    {% endif %}
+
+                    <p class="card-text text-secondary mb-4 flex-grow-1">
+                        {{ post.contenido|striptags|truncatewords:20 }}
+                    </p>
+
+                    <div class="mt-auto">
+                        <a href="{% url 'post_detail' pk=post.pk %}" 
+                        class="btn btn-outline-primary rounded-pill btn-sm fw-bold px-4 btn-hover-pink" 
+                        style="border-color: var(--color-primario); color: var(--color-primario);">
+                            Leer artículo completo &rarr;
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
+        
         {% empty %}
-        <p>No hay artículos publicados aún.</p>
+        <div class="col-12 text-center py-5">
+            <h3 class="text-muted">Aún no hay artículos publicados.</h3>
+            <p>Vuelve pronto para leer novedades.</p>
+        </div>
         {% endfor %}
     </div>
+</div>
+
+<style>
+    /* Efecto de elevación de la tarjeta */
+    .hover-shadow:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 1rem 3rem rgba(0,0,0,.1) !important;
+        transition: all 0.3s ease;
+    }
+    .transition {
+        transition: all 0.3s ease;
+    }
+
+    /* --- BOTÓN ROSA AL PASAR EL RATÓN --- */
+    .btn-hover-pink:hover {
+        background-color: #F3D1DC !important; /* Tu Rosa Claro */
+        border-color: #F3D1DC !important;
+        color: var(--color-primario) !important; /* Texto Azul Oscuro para que se lea bien */
+        font-weight: bold;
+    }
+</style>
 {% endblock %}

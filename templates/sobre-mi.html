@@ -1,60 +1,94 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Sobre Mí | Mi Historia{% endblock %}
 
 {% block content %}
 <div class="row align-items-center my-5">
     <div class="col-lg-7">
-        <h1 class="display-4 fw-bold lh-1 mb-3">Hola, soy [Tu Nombre]</h1>
+        <h1 class="display-4 fw-bold lh-1 mb-3" style="color: var(--color-primario);">Hola, soy Patricia</h1>
         <p class="lead text-muted">
-            Apasionado por la tecnología, la ciberseguridad y el desarrollo web seguro.
+            Apasionada por la tecnología, la concienciación en ciberseguridad y el desarrollo web seguro.
         </p>
+        
         <p>
-            Mi viaje comenzó cuando decidí que quería entender cómo funcionaban las cosas por dentro. 
-            Actualmente estoy profundizando en <strong>Python, Django y la creación de APIs</strong>, 
-            siempre con un enfoque en escribir código limpio y, sobre todo, seguro.
+            Mi camino profesional siempre ha tenido un hilo conductor: <strong>hacer que la información sea clara y útil para las personas.</strong> 
+            Tras más de dos décadas trabajando en formación y comunicación, hoy aplico toda esa experiencia en el mundo de la ciberseguridad.
         </p>
+        
+        <p>
+            A lo largo de mi carrera, desde la gestión de proyectos psicopedagógicos hasta el análisis de tendencias para grandes marcas pasando por formación a diversos públicos objetivos, he aprendido 
+            que la tecnología solo es efectiva cuando es comprensible. Por eso, mi enfoque actual une mi base pedagógica con una formación técnica 
+            especializada en programación, ciberseguridad y gestión del riesgo humano.
+        </p>
+
+        <p>
+            Cuando comencé a introducirme en el sector, descubrí algo que me impactó: la mayoría de los ciberataques no ocurren porque falle la tecnología, 
+            sino porque manipulan a las personas. Además, observé que la industria, mayoritariamente, se centra en la parte técnica, por lo que
+            decidí enfocarme en el eslabón más olvidado: el usuario. No estoy aquí para hablarte en binario ni para instalarte un servidor.
+        </p>
+
+        <h5 class="fw-bold my-4 lh-base" style="color: var(--color-acento);">
+            Mi misión en Horizonte Digital Seguro es traducir la ciberseguridad al idioma "humano".
+        </h5>
+
+        <p>
+        Utilizo mi experiencia técnica para <strong>crear artículos reflexivos, recursos y guías</strong> 
+        que te pueden dar ideas para aplicar la ciberseguridad en tu día a día, sin que tengas que volverte una experta informática.
+        </p>
+            
         <p>
             Creo firmemente que la tecnología debe ser accesible y segura para todos. En este espacio 
             comparto mis aprendizajes y ofrezco soluciones para proteger y potenciar tu presencia digital.
         </p>
+
         <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-4">
-            <a href="{% url 'contacto' %}" class="btn btn-primary btn-lg px-4 me-md-2">Contactar</a>
-            <a href="{% url 'blog' %}" class="btn btn-outline-secondary btn-lg px-4">Leer mi Blog</a>
+           <a href="https://www.instagram.com/horizontedigitalseguro/" 
+                target="_blank" rel="noopener" 
+                class="btn btn-primary btn-lg px-4 me-md-2 rounded-pill">
+                <i class="bi bi-instagram me-2"></i> Sígueme en Instagram
+            </a>
+            <a href="{% url 'blog' %}" class="btn btn-outline-secondary btn-lg px-4 rounded-pill">Leer mi Blog</a>
         </div>
     </div>
 
-    <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg rounded-3">
-        <div class="bg-dark text-white d-flex align-items-center justify-content-center" style="height: 400px;">
-            <span class="h1">Tu Foto Aquí</span>
-        </div>
+    <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg rounded-4 mt-4 mt-lg-0">
+        <img src="{% static 'img/perfil.jpg' %}" 
+             alt="Patricia - Consultora de Ciberseguridad" 
+             class="img-fluid w-100" 
+             style="object-fit: cover; min-height: 400px;">
     </div>
 </div>
 
-<div class="row mt-5">
-    <h3 class="border-bottom pb-2 mb-4">Mis Herramientas</h3>
-    <div class="col-md-4">
-        <h5>Backend</h5>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Python & Django</li>
-            <li class="list-group-item">APIs RESTful</li>
-            <li class="list-group-item">PostgreSQL / SQLite</li>
+<div class="row mt-5 pt-4">
+    <div class="col-12 mb-4">
+        <h3 class="border-bottom pb-2" style="font-family: 'Quicksand', sans-serif;">Mis pilares de Defensa</h3>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <h5 class="fw-bold" style="color: var(--color-acento);">Inteligencia y Prevención</h5>
+        <ul class="list-group list-group-flush shadow-sm rounded border-0">
+            <li class="list-group-item border-0 bg-light">Auditoría de Ingeniería Social</li>
+            <li class="list-group-item border-0 bg-light">Análisis de Huella Digital</li>
+            <li class="list-group-item border-0 bg-light">Evaluación de Riesgo Humano</li>
         </ul>
     </div>
-    <div class="col-md-4">
-        <h5>Frontend</h5>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">HTML5 & CSS3</li>
-            <li class="list-group-item">Bootstrap 5</li>
-            <li class="list-group-item">JavaScript (ES6)</li>
+    
+    <div class="col-md-4 mb-4">
+        <h5 class="fw-bold" style="color: var(--color-primario);">Cultura de Seguridad</h5>
+        <ul class="list-group list-group-flush shadow-sm rounded border-0">
+            <li class="list-group-item border-0 bg-light">Formación Anti-Phishing</li>
+            <li class="list-group-item border-0 bg-light">Protocolos de Seguridad</li>
+            <li class="list-group-item border-0 bg-light">Higiene Digital</li>
         </ul>
     </div>
-    <div class="col-md-4">
-        <h5>Seguridad</h5>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">OWASP Top 10 Awareness</li>
-            <li class="list-group-item">Gestión de Identidades</li>
-            <li class="list-group-item">Hacking Ético (Learning)</li>
+    
+    <div class="col-md-4 mb-4">
+        <h5 class="fw-bold" style="color: #BA6B8A;">Respuesta y Cumplimiento</h5>
+        <ul class="list-group list-group-flush shadow-sm rounded border-0">
+            <li class="list-group-item border-0 bg-light">Gestión de Crisis</li>
+            <li class="list-group-item border-0 bg-light">Protección de Identidad</li>
+            <li class="list-group-item border-0 bg-light">Cumplimiento Normativo</li>
         </ul>
     </div>
 </div>

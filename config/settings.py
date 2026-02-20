@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'web',
+    'django_summernote',
 ]
 
 MIDDLEWARE = [
@@ -120,3 +121,39 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+# Configuración de Archivos Multimedia (Imágenes del Blog)
+import os
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# settings.py
+
+# 1. Seguridad para el iframe
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+# 2. Tema estable que permite desplegar menús
+SUMMERNOTE_THEME = 'bs4'
+
+# 3. Configuración de Tamaño y Herramientas
+SUMMERNOTE_CONFIG = {
+    'iframe': True,  # Necesario para que los menús funcionen sobre el fondo negro
+    'summernote': {
+        'width': '720px',  # <-- Recuperamos tu ANCHO ideal
+        'height': '480px', # <-- Recuperamos la ALTURA cómoda
+        'toolbar': [
+            ['style', ['style']],
+            ['font', ['bold', 'italic', 'underline', 'clear']],
+            ['fontname', ['fontname']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video', 'hr']],
+            ['view', ['fullscreen', 'codeview', 'help']],
+        ],
+        # Opciones para los desplegables
+        'fontNames': ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Verdana'],
+        'fontSizes': ['8', '10', '12', '14', '16', '18', '24', '36'],
+    },
+}

@@ -16,10 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings            
+from django.conf.urls.static import static
 
 urlpatterns = [
     # Ruta del panel de administración (Protegido por Django)
     path('admin/', admin.site.urls),
     # Delegamos el resto del tráfico a nuestra app 'web'
     path('', include('web.urls')),
+    # Ruta para el editor de texto
+    path('summernote/', include('django_summernote.urls')),
+
 ]
+
+# Esto permite ver las imágenes subidas mientras estás en modo desarrollo
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

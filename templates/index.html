@@ -7,18 +7,23 @@
 <div class="row align-items-center py-5">
     <div class="col-lg-6">
         <h1 class="display-4 fw-bold mb-3" style="color: var(--color-primario);">
-            Protege el eslabón <br>
-            <span style="color: var(--color-acento);">más humano</span>.
+            Ciberseguridad sin tecnicismos <br>
+            <span style="color: var(--color-acento);">para negocios con alma.</span>
         </h1>
         <p class="lead text-muted mb-4">
-            La ciberseguridad no es solo código; es psicología. Aprende a detectar la <strong>Ingeniería Social</strong> y blinda tu entorno digital contra el engaño.
+            Gestionas clientes, facturas y redes sociales. Los ciberdelincuentes lo saben. Aprende a detectar fraudes y blinda tu entorno digital contra el engaño. Seguridad diseñada para tu ritmo de vida.
         </p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-            <a href="{% url 'blog' %}" class="btn btn-primary btn-lg px-4 me-md-2 shadow-sm">
-                Leer Artículos
+            <a href="/media/recursos/pdfs/PlanEmergencia.pdf" 
+                download 
+                class="btn btn-primary btn-lg px-4 rounded-pill btn-hover-pink">
+                <i class="bi bi-file-earmark-pdf me-2"></i> Descargar Plan de Emergencia
             </a>
-            <a href="{% url 'recursos' %}" class="btn btn-outline-secondary btn-lg px-4 border-0" style="background-color: white;">
-                Descargar Guías
+            <a href="https://www.incibe.es/empresas/sectoriza2" 
+                target="_blank" rel="noopener"
+                class="btn btn-outline-secondary btn-lg px-4 border-0 btn-hover-pink" 
+                style="background-color: white;">
+                ¿Soy vulnerable? Haz el Test
             </a>
         </div>
     </div>
@@ -35,44 +40,83 @@
     </div>
 
     <div class="col-md-4 mb-4">
-        <div class="card h-100 p-4 border-0 bg-white">
+        <div class="card h-100 p-4 border-0 bg-white shadow-sm hover-card">
             <div class="mb-3 text-primary">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
                     <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
                 </svg>
             </div>
-            <h3 class="h5">Blog Educativo</h3>
-            <p class="text-muted small">Artículos sobre phishing, vishing y cómo proteger tu identidad.</p>
-            <a href="{% url 'blog' %}" class="stretched-link text-decoration-none fw-bold">Leer más &rarr;</a>
+            <h3 class="h5">Micro-Learning</h3>
+            <p class="text-muted small">Artículos de 3 minutos para entender que los ciberataques también pueden afectar a tu negocio... y a tus cuentas bancarias.</p>
+            
+            <a href="{% url 'blog' %}" class="stretched-link text-decoration-none fw-bold hover-arrow" style="color: var(--color-acento);">
+                Leer para prevenir &rarr;
+            </a>
         </div>
     </div>
 
     <div class="col-md-4 mb-4">
-        <div class="card h-100 p-4 border-0 bg-white">
+        <div class="card h-100 p-4 border-0 bg-white shadow-sm hover-card">
             <div class="mb-3 text-danger" style="color: var(--color-alerta) !important;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-shield-check" viewBox="0 0 16 16">
                     <path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.23-1.158-.512-1.519-.714C11.393 1.295 9.924 1 8.275 1s-3.118.295-4.937.89z"/>
                 </svg>
             </div>
-            <h3 class="h5">Herramientas</h3>
-            <p class="text-muted small">Descarga guías, checklists y utilidades gratuitas.</p>
-            <a href="{% url 'recursos' %}" class="stretched-link text-decoration-none fw-bold">Descargar &rarr;</a>
+            <h3 class="h5">Kits de supervivencia</h3>
+            <p class="text-muted small">Checklists, plantillas de contraseñas y guías paso a paso para ponérselo un poquito más difícil a los ciberatacantes.</p>
+            
+            <a href="{% url 'recursos' %}" class="stretched-link text-decoration-none fw-bold hover-arrow" style="color: var(--color-acento);">
+                Descargar gratis &rarr;
+            </a>
         </div>
     </div>
-
+    {% comment %}
     <div class="col-md-4 mb-4">
-        <div class="card h-100 p-4 border-0 bg-white">
+        <div class="card h-100 p-4 border-0 bg-white shadow-sm hover-card">
             <div class="mb-3 text-info" style="color: var(--color-acento) !important;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
                     <path d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H4Zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
                     <path d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.373 5.373 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2H2Z"/>
                 </svg>
             </div>
-            <h3 class="h5">Consultoría</h3>
-            <p class="text-muted small">Servicios personalizados de auditoría y formación.</p>
-            <a href="{% url 'servicios' %}" class="stretched-link text-decoration-none fw-bold">Ver Planes &rarr;</a>
+            <h3 class="h5">Mentoría Personalizada</h3>
+            <p class="text-muted small">¿Te sientes saturada con tanta herramienta? Permíteme guiarte. Aprende a proteger el corazón de tu proyecto de forma sencilla.</p>
+            
+            <a href="{% url 'servicios' %}" class="stretched-link text-decoration-none fw-bold hover-arrow" style="color: var(--color-acento);">
+                Descubre soluciones &rarr;
+            </a>
         </div>
     </div>
+    {% endcomment %}
+</div>
+
+<div class="row mt-5 py-5 rounded-4" style="background-color: rgba(93, 138, 168, 0.1);"> <div class="col-lg-8 mx-auto text-center">
+    <div class="mb-3" style="color: var(--color-primario);">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-graph-down-arrow" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 11.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0v2.6l-3.613-4.417a.5.5 0 0 0-.74-.037L7.06 8.233 3.404 3.206a.5.5 0 0 0-.808.588l4 5.5a.5.5 0 0 0 .758.06l2.609-2.61L13.5 10.5H10Z"/>
+        </svg>
+    </div>
+
+    <h3 class="h4 fw-bold mb-4" style="font-family: 'Quicksand', sans-serif;">¿Sabías que...?</h3>
+
+    <p class="fs-5 lh-lg text-muted">
+        La concienciación en ciberseguridad es vital para tu negocio: el <strong style="color: var(--color-primario);">96% de las empresas en España</strong> ya ha sufrido algún ataque.
+        De estos, el 60% incluyen interacciones humanas. El impacto es tan fuerte que el <strong style="color: var(--color-primario);">60% de las pequeñas empresas</strong> quiebra solo seis meses después de un incidente grave.
+    </p>
+    
+    <p class="fs-5 lh-lg text-muted">
+        Esto ocurre porque el golpe financiero de las multas y la limpieza técnica es enorme, pero sobre todo por la <strong style="color: var(--color-primario);">pérdida de confianza</strong>: un <strong style="color: var(--color-primario);">43% pierde a sus clientes de siempre</strong> y casi la mitad tiene serias dificultades para conseguir nuevos debido al daño en su reputación.
+    </p>
+
+    <div class="mt-4 pt-3 border-top border-secondary-subtle w-50 mx-auto">
+        <p class="small mb-0">
+            Fuente: 
+            <a href="https://www.ibm.com/es-es/reports/data-breach" target="_blank" class="text-decoration-none fw-bold" style="color: var(--color-acento);">
+                IBM Report: Cost of a Data Breach <i class="bi bi-box-arrow-up-right ms-1" style="font-size: 0.8em;"></i>
+            </a>
+        </p>
+    </div>
+</div>
 </div>
 
 <style>
@@ -80,6 +124,27 @@
     0% { transform: translateY(0px); }
     50% { transform: translateY(-15px); }
     100% { transform: translateY(0px); }
+}
+
+/* Efecto hover en el botón "Haz el test" */
+.btn-hover-pink:hover {
+    background-color: #F3D1DC !important;
+    border-color: #F3D1DC !important;
+    color: var(--color-primario) !important; 
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Efecto suave para las tarjetas al pasar el ratón */
+.hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.1) !important;
+    transition: all 0.3s ease;
+}
+
+/* Efecto flecha que se mueve */
+.hover-card:hover .hover-arrow {
+    text-decoration: underline !important;
 }
 </style>
 {% endblock %}

@@ -4,64 +4,103 @@
 
 {% block content %}
 <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-    <h1 class="display-4 fw-normal">Mis Servicios</h1>
-    <p class="fs-5 text-muted">Soluciones escalables adaptadas a tus necesidades. Elige el plan que mejor se adapte a tu proyecto.</p>
+    <h1 class="display-4 fw-bold" style="color: var(--color-primario);">Invierte en tu tranquilidad</h1>
+    <h2 class="h4 text-muted mb-4 fw-normal">No en parches de urgencia.</h2>
+    <p class="fs-5 text-muted">No necesitas un departamento de IT gigante ni presupuestos corporativos. Necesitas una estrategia diseñada para la realidad de tu día a día: ágil, humana y sin tecnicismos.</p>
 </div>
 
-<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center px-lg-2">
     
     <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm">
-            <div class="card-header py-3">
-                <h4 class="my-0 fw-normal">Básico</h4>
+        <div class="card mb-4 rounded-4 shadow-sm border-0 h-100">
+            <div class="card-header py-4 text-white" style="background-color: var(--color-acento); border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
+                <h4 class="my-0 fw-bold">Auditoría de Salud Digital</h4>
+                <p class="mb-0 mt-2 small opacity-75">Ideal si estás empezando o nunca has revisado tu seguridad.</p>
             </div>
-            <div class="card-body">
-                <h1 class="card-title pricing-card-title">€XX<small class="text-muted fw-light">/hora</small></h1>
-                <ul class="list-unstyled mt-3 mb-4">
-                    <li>Consultoría inicial</li>
-                    <li>Revisión de código</li>
-                    <li>Soporte por Email</li>
-                    <li>Acceso al Blog</li>
+            <div class="card-body d-flex flex-column">
+                <p class="text-muted fst-italic small mb-3">
+                    Una radiografía completa para tapar los agujeros antes de que alguien los encuentre.
+                </p>
+                <h1 class="card-title pricing-card-title mb-3" style="color: var(--color-primario);">
+                    desde 150€<small class="text-muted fw-light fs-6"> /pago único</small>
+                </h1>
+                
+                <ul class="list-unstyled mt-3 mb-4 text-start small mx-auto flex-grow-1" style="max-width: 300px;">
+                    <li class="mb-2">🕵️‍♀️ <strong>¿Qué sabe Internet de ti?</strong></li>
+                    <li class="mb-2">🔐 <strong>Revisión de política:</strong> Contraseñas y accesos.</li>
+                    <li class="mb-2">🧠 <strong>Mapa de Riesgo Humano:</strong> Identificamos por dónde es más probable que te engañen.</li>
+                    <li class="mb-2">📄 <strong>Plan de Acción:</strong> Hoja de ruta paso a paso para corregir fallos.</li>
                 </ul>
-                <button type="button" class="w-100 btn btn-lg btn-outline-primary">Contactar</button>
+                
+                <a href="{% url 'contacto' %}" 
+                   class="btn btn-lg btn-outline-primary rounded-pill w-100 mt-auto btn-hover-pink" 
+                   style="border-color: var(--color-acento); color: var(--color-acento);">
+                   Quiero mi auditoría
+                </a>
             </div>
         </div>
     </div>
 
     <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm border-primary">
-            <div class="card-header py-3 text-white bg-primary border-primary">
-                <h4 class="my-0 fw-normal">Profesional</h4>
+        <div class="card mb-4 rounded-4 shadow-lg border-0 h-100" style="transform: scale(1.02); z-index: 2;">
+            <div class="card-header py-4 text-white" style="background-color: var(--color-primario); border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
+                <h4 class="my-0 fw-bold">Mentoría y Soporte Activo</h4>
+                <p class="mb-0 mt-2 small opacity-75">Deja de preocuparte por la tecnología y enfócate en tu negocio.</p>
             </div>
-            <div class="card-body">
-                <h1 class="card-title pricing-card-title">€XX<small class="text-muted fw-light">/proyecto</small></h1>
-                <ul class="list-unstyled mt-3 mb-4">
-                    <li>Desarrollo Web Completo</li>
-                    <li>Integración con APIs</li>
-                    <li>Base de datos optimizada</li>
-                    <li>Soporte prioritario</li>
+            <div class="card-body d-flex flex-column bg-light-subtle">
+                <p class="text-muted fst-italic small mb-3">
+                    Yo vigilo tu espalda. Formación continua y soporte directo.
+                </p>
+                <h1 class="card-title pricing-card-title mb-3" style="color: var(--color-primario);">
+                    desde 200€<small class="text-muted fw-light fs-6"> /mensual</small>
+                </h1>
+                
+                <ul class="list-unstyled mt-3 mb-4 text-start small mx-auto flex-grow-1" style="max-width: 300px;">
+                    <li class="mb-2">🚀 <strong>Todo lo incluido en la Auditoría</strong>.</li>
+                    <li class="mb-2">🛡️ <strong>Protocolos Anti-Fraude:</strong> Blindaje de pagos y facturación (evita estafas del CEO).</li>
+                    <li class="mb-2">🆘 <strong>Línea Directa de Dudas:</strong> ¿Email sospechoso? Envíamelo y te digo si es seguro.</li>
+                    <li class="mb-2">🎓 <strong>Micro-learning mensual:</strong> Sesiones 1 a 1 para mantenerte al día sin saturarte.</li>
                 </ul>
-                <button type="button" class="w-100 btn btn-lg btn-primary">Empezar ahora</button>
+                <a href="{% url 'contacto' %}" class="btn btn-lg btn-primary rounded-pill w-100 mt-auto">Empieza a protegerme</a>
             </div>
         </div>
     </div>
 
     <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm">
-            <div class="card-header py-3">
-                <h4 class="my-0 fw-normal">Enterprise</h4>
+        <div class="card mb-4 rounded-4 shadow-sm border-0 h-100">
+            <div class="card-header py-4" style="background-color: #F3D1DC; color: var(--color-primario); border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
+                <h4 class="my-0 fw-bold">Gestión del Riesgo Humano</h4>
+                <p class="mb-0 mt-2 small fw-bold">Porque el 95% de los errores son humanos, no técnicos.</p>
             </div>
-            <div class="card-body">
-                <h1 class="card-title pricing-card-title">A medida</h1>
-                <ul class="list-unstyled mt-3 mb-4">
-                    <li>Arquitectura de Software</li>
-                    <li>Auditoría de Ciberseguridad</li>
-                    <li>Formación de equipos</li>
-                    <li>Soporte 24/7</li>
+            <div class="card-body d-flex flex-column">
+                <p class="text-muted fst-italic small mb-3">
+                    Formación avanzada, simulaciones de ataque y creación de protocolos anti-fraude.
+                </p>
+                <h1 class="card-title pricing-card-title mb-3" style="color: var(--color-primario);">
+                    A medida
+                </h1>
+                
+                <ul class="list-unstyled mt-3 mb-4 text-start small mx-auto flex-grow-1" style="max-width: 300px;">
+                    <li class="mb-2">🚀 <strong>Todo lo de Auditoría + Mentoría</strong>.</li>
+                    <li class="mb-2">🧠 <strong>Human Firewall:</strong> Entrenamiento contra manipulación psicológica.</li>
+                    <li class="mb-2">📋 <strong>Cumplimiento Normativo:</strong> Supervisión RGPD y auditorías.</li>
+                    <li class="mb-2">🕵️‍♀️ <strong>Auditoría de Procesos:</strong> Detectamos fugas en vuestra rutina o proveedores.</li>
+                    <li class="mb-2">🚨 <strong>Protocolos de Crisis:</strong> Gestión de reputación ante incidentes.</li>
+                    <li class="mb-2">📊 <strong>Informe de Madurez:</strong> Métricas reales de mejora.</li>
                 </ul>
-                <button type="button" class="w-100 btn btn-lg btn-outline-primary">Agendar llamada</button>
+                <a href="{% url 'contacto' %}" class="btn btn-lg btn-outline-primary rounded-pill w-100 mt-auto btn-hover-pink" style="border-color: #F3D1DC; color: var(--color-primario); background-color: rgba(243, 209, 220, 0.2);">Agendar consultoría</a>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+    .btn-hover-pink:hover {
+        background-color: #F3D1DC !important;    /* Tu Rosa Pastel */
+        border-color: #F3D1DC !important;
+        color: var(--color-primario) !important; /* Texto Azul Oscuro para que se lea bien */
+        transform: translateY(-2px);             /* Pequeño saltito estético */
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);   /* Sombra suave */
+    }
+</style>
 {% endblock %}
